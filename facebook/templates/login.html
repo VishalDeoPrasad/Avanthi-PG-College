@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title> Login Page </title>
+        <style>
+            body{
+                text-align: center;
+            }
+            form {
+                display: inline-block;
+                border: 2px solid;
+                padding: 10px;
+                background-color: lightgray;
+                border-radius: 10px;
+                box-shadow: 1px 5px 15px;
+            }
+            input{
+                display: block;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            button{
+                background-color: blue;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1> Welcome to Facebook </h1>
+        <form action='/login' method='post'>
+            {% csrf_token %}
+            <input name='username' type='text' placeholder="Username">
+            <input name="password" type='password' placeholder='password'>
+            <button type='submit'> Sign In </button> 
+        </form>
+    </body>
+</html>
