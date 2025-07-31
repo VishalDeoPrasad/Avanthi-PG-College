@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title> Register </title>
+        <style>
+            body{
+                text-align: center;
+            }
+            form{
+                display: inline-block;
+                width: 300px;
+                padding: 20px;
+                border: 1px solid;
+                background-color: lightgray;
+                border-radius: 10px;
+            }
+            input, button{
+                display: block;
+                width: 90%;
+                padding: 6px;
+                margin: 10px;   
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1> Registration form </h1>
+        <form method='post'>
+            {% csrf_token %}
+            <input name="username" type='text' placeholder='username'>
+            <input name="name" type='text' placeholder='full name'>
+            <input name="mobile" type='tel' placeholder='Mobile'>
+            <input name="email" type='email' placeholder='email'>
+            <input name="password" type='password' placeholder='password'>
+            <button type="submit">Register</button>
+        </form>
+    </body>
+</html>

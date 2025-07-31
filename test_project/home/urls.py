@@ -1,8 +1,0 @@
-from django.contrib import admin
-from django.urls import path
-from home import views
-
-urlpatterns = [
-    path("login", views.login, name="login"),
-    path("contact", views.contact, name="contact")
-]
