@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - E-Commerce</title>
+    <style>
+        body { margin: 0px; padding: 0px; font-family: Arial; text-align: center; background: #f4f4f4; }
+        .nav { background: #444; padding: 10px; }
+        .nav a { color: white; margin: 0 10px; text-decoration: none; }
+        .product { background: white; padding: 15px; margin: 15px; display: inline-block; width: 220px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); }
+        img { width: 200px; height: 200px; }
+        .btn { background: green; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">🏠 Home</a>
+        <a href="/cart/">🛒 Cart</a>
+        <a href="/login/">🔑 Login</a>
+        <a href="/register/">📝 Register</a>
+        <a href="/logout/">🚪 Logout</a>
+    </div>
+    {% if messages %}
+        <div style="background: #d4edda; color: #155724; padding: 10px; width: 50%; margin: 10px auto; border-radius: 5px;">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h1>🛍 Our Products</h1>
+
+    {% for product in products %}
+    <div class="product">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>₹{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <a href="/add-to-cart/{{ product.id }}/" class="btn">Add to Cart</a>
+    </div>
+    {% empty %}
+    <p>No products available. Add products from admin.</p>
+    {% endfor %}
+</body>
+</html>
