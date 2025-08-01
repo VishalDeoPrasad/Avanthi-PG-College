@@ -5,7 +5,7 @@ from django.contrib import messages
 # Home Page – Show all products
 def home(request):
     products = Product.objects.all()
-    return render(request, 'home/home.html', {'products': products})
+    return render(request, 'home.html', {'products': products})
 
 # Register View
 def register_view(request):
@@ -24,7 +24,7 @@ def register_view(request):
             password=password
         )
         return HttpResponse("Registration Successful! <a href='/login/'>Login Here</a>")
-    return render(request, 'home/register.html')
+    return render(request, 'register.html')
 
 # Login View
 def login_view(request):
@@ -38,13 +38,13 @@ def login_view(request):
             return HttpResponse(f"Welcome {username}! <a href='/'>Go Home</a>")
         else:
             return HttpResponse("Invalid Credentials! <a href='/register/'>Register Here</a>")
-    return render(request, 'home/login.html')
+    return render(request, 'login.html')
 
 # Cart Page
 def cart(request):
     cart_items = request.session.get('cart', [])
     products = Product.objects.filter(id__in=cart_items)
-    return render(request, 'home/cart.html', {'products': products})
+    return render(request, 'cart.html', {'products': products})
 
 # Add to Cart Function
 def add_to_cart(request, id):
@@ -62,7 +62,7 @@ def add_to_cart(request, id):
 def checkout(request):
     # Clear the cart after checkout
     request.session['cart'] = []
-    return render(request, 'home/checkout.html')
+    return render(request, 'checkout.html')
 
 def logout_view(request):
     """
